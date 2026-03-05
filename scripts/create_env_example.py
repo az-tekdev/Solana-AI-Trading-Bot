@@ -1,0 +1,50 @@
+"""Script to create .env.example file."""
+
+from pathlib import Path
+
+env_example_content = """# Solana Configuration
+SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+SOLANA_WS_URL=wss://api.mainnet-beta.solana.com
+WALLET_PRIVATE_KEY=your_wallet_private_key_base58_here
+
+# Jupiter API
+JUPITER_API_URL=https://quote-api.jup.ag/v6
+
+# AI/ML Configuration
+AI_MODEL_TYPE=lstm
+MODEL_PATH=models/lstm_model.pth
+USE_LLM=false
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4
+
+# Trading Configuration
+DRY_RUN=true
+MAX_POSITION_SIZE=0.1
+SLIPPAGE_TOLERANCE=1.0
+STOP_LOSS_PERCENT=5.0
+TAKE_PROFIT_PERCENT=10.0
+MIN_LIQUIDITY_USD=10000
+
+# Risk Management
+MAX_DAILY_LOSS=0.05
+MAX_POSITIONS=3
+COOLDOWN_SECONDS=60
+
+# Data Sources
+BIRDEYE_API_KEY=your_birdeye_api_key_here
+HELIUS_API_KEY=your_helius_api_key_here
+
+# Logging
+LOG_LEVEL=INFO
+LOG_FILE=logs/trading_bot.log
+
+# Backtesting
+BACKTEST_START_DATE=2024-01-01
+BACKTEST_END_DATE=2024-12-31
+INITIAL_BALANCE=1000.0
+"""
+
+if __name__ == "__main__":
+    env_file = Path(__file__).parent.parent / ".env.example"
+    env_file.write_text(env_example_content)
+    print(f"Created {env_file}")
